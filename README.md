@@ -10,6 +10,7 @@ which stands for the x and y position, the yaw angele and the velocity of the ca
 are delta and a for steering wheel and throttle and break pedals.
 
 Here are the update equations:
+
 ![Equations](./01_update_equations.png)
 
 ## Timestep Length and Elapsed Duration (N & dt)
