@@ -3,6 +3,32 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## The Model
+
+I use the kinematic model that ignore tire forces, gravity, and mass. The state is [x, y, psi, v]
+which stands for the x and y position, the yaw angele and the velocity of the car. The actuators
+are delta and a for steering wheel and throttle and break pedals.
+
+Here are the update equations:
+![Equations](./01_update_equations.png)
+
+## Timestep Length and Elapsed Duration (N & dt)
+
+Idealy, we want to set N as large as possible and dt as small as possible when my computer can
+solve it quickly. I started with N = 10 and dt = 0.1 as suggested in the youtube video. I tried
+N = 20 and dt = 0.05, but it was too slow. After trying sevaral other values, I settled with
+N = 10 and dt = 0.15 which looks further ahead.
+
+## Polynomial Fitting and MPC Preprocessing
+
+The waypoints are transformed to car coordinates before processing. The hyperparameters for the
+cost funtions is taken from the youtube video and tweaked by trail and error.
+
+## Model Predictive Control with Latency
+
+It seems that 100ms latency is not an issue even nothing is done about it.
+I predicted the state of the car in 100ms as suggested by [Alex_Cui](https://discussions.udacity.com/t/how-to-incorporate-latency-into-the-model/257391).
+
 ## Dependencies
 
 * cmake >= 3.5
